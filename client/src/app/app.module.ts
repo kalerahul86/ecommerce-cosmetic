@@ -7,19 +7,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ProductService } from './service/product-service';
+import { ProductService } from './service/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingsService } from './service/settings.service';
 import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionService } from './service/transaction.service';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 
 const appRoutes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'settings',      component: SettingsComponent },
   { path: 'add-product',      component: AddProductComponent },
-  { path: 'update-product/:id',      component: UpdateProductComponent }
+  { path: 'update-product/:id',      component: UpdateProductComponent },
+  { path: 'transactions',      component: TransactionComponent },
+  { path: 'add-transaction',      component: AddTransactionComponent }
 ];
 
 @NgModule({
@@ -28,7 +33,9 @@ const appRoutes: Routes = [
     ProductComponent,
     SettingsComponent,
     AddProductComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    TransactionComponent,
+    AddTransactionComponent
   ],
   imports: [
     BrowserModule,  
@@ -64,7 +71,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [HttpClientModule, ProductService, SettingsService],
+  providers: [HttpClientModule, ProductService, SettingsService, TransactionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

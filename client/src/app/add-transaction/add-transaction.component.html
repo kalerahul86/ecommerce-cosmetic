@@ -1,0 +1,39 @@
+<mat-toolbar>
+    <span>Buy Stock</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form" (submit)="onFormSubmit()">
+          
+          <mat-form-field class="full-width">
+            <mat-label>Product Code</mat-label>
+            <input type = "text" [(ngModel)]="product.code" name="code" placeholder = "Enter Code" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Quantity</mat-label>
+            <input type = "text" name = "quantity" [(ngModel)]="transaction.quantity" placeholder = "Enter quantity" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+           <mat-label>Price Per Item</mat-label>
+           <input type = "text" name = "perItemPrice" [(ngModel)]="transaction.perItemPrice" placeholder = "Enter Price Per Item" matInput >
+        </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Business Points</mat-label>
+            <input type = "text" name = "businessPoint" [(ngModel)]="transaction.businessPoint" placeholder = "Enter Business Point" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Catalog</mat-label>
+            <input type = "text" name = "catalog" [(ngModel)]="catalog.code" placeholder = "Enter Catalog Number" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Buyer</mat-label>
+            <input type = "text" name = "buyer" [(ngModel)]="transaction.buyer" placeholder = "Enter Buyer Name" matInput >
+         </mat-form-field>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary" style="margin-bottom: 5px">Submit</button>
+          <button  mat-raised-button color="warn" [routerLink]="'/transactions'" style="margin-bottom: 5px">Cancel</button>
+         </mat-card-actions>
+        </form>
+     </mat-card-content>
+     
+  </mat-card>

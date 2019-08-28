@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+    cosmetic-eureka-service:
+        build:
+            context: ./cosmetic-eureka-service/
+            dockerfile: Dockerfile
+        container_name: eurekaservice
+        ports:
+            - "8761:8761"
+        restart: unless-stopped
+    cosmetic-db:
+        container_name: cosmetic-db
+        restart: always
+        image: mysql:latest
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: cosmetic
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_HOST: localhost
+            MYSQL_PORT: 3306
+        volumes:
+            - cosmetic-db:/var/lib/mysql
+        ports:
+            - "3306:3306"
+    cosmetic-setup-service:
+        build:
+            context: ./cosmetic-setup-service/
+            dockerfile: Dockerfile
+        container_name: setupservice
+        ports:
+            - "8080:8080"
+        restart: unless-stopped
+        volumes:
+            - cosmetic-db:/var/lib/mysql
+    
+volumes:
+    cosmetic-db:

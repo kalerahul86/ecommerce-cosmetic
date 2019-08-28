@@ -7,7 +7,7 @@ import { MatAutocomplete, MatChipInputEvent, MatAutocompleteSelectedEvent } from
 import {map, startWith} from 'rxjs/operators';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Product } from '../model/product.model';
-import { ProductService } from '../service/product-service';
+import { ProductService } from '../service/product.service';
 import { Router } from '@angular/router';
 
 @Component({

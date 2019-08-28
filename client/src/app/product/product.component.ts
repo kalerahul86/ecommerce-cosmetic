@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ProductService } from '.././service/product-service';
+import { ProductService } from '../service/product.service';
 import { MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 

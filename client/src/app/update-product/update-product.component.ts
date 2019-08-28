@@ -4,7 +4,7 @@ import { CosmeticMaster } from '../model/cosmetic-master.model';
 import { Product } from '../model/product.model';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { SettingsService } from '../service/settings.service';
-import { ProductService } from '../service/product-service';
+import { ProductService } from '../service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
