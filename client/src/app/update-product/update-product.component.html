@@ -1,0 +1,58 @@
+<mat-toolbar>
+    <span>Update Product</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form" [formGroup] = "form" (submit)="onFormSubmit()">
+            <div class="full-width">
+                <mat-label><img src="{{image}}"/></mat-label>
+            </div> 
+          <input type = "hidden" [(ngModel)]="id" formControlName="id">  
+          <mat-form-field class="full-width">
+            <mat-label>Product Code</mat-label>
+            <input type = "text" [(ngModel)]="code" formControlName="code" placeholder = "Enter Code" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Product Name</mat-label>
+            <input type = "text" formControlName = "name" [(ngModel)]="pname" placeholder = "Enter name" matInput >
+         </mat-form-field>
+         <mat-form-field class="full-width">
+           <mat-label>Product Description</mat-label>
+           <input type = "text" formControlName = "description" [(ngModel)]="description" placeholder = "Enter Description" matInput >
+        </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Product Category</mat-label>
+            <mat-select placeholder="Select Category" [(ngModel)]="category" formControlName="category" >
+              <mat-option *ngFor="let category of categories|async" [value]="category" >{{ category.value }}</mat-option>
+            </mat-select>
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Product Company</mat-label>
+            <mat-select placeholder="Select Company" [(ngModel)]="company" formControlName="company" >
+              <mat-option *ngFor="let company of companies|async" [value]="company" >{{ company.value }}</mat-option>
+            </mat-select>
+         </mat-form-field>
+         <mat-form-field class="w100 full-width">
+            <mat-label>Product Tags</mat-label>
+            <mat-chip-list multiple>
+              <mat-chip *ngFor="let tag of allTags" selectable="true"
+                       [selected]="isSelected(tag)"
+                       (click)="toggleTag(tag)">
+                {{tag.value}}&nbsp;
+                <mat-icon>{{isSelected(tag) ? "close" : "add"}}</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </mat-form-field>
+         
+          <div class="full-width">
+            <mat-label>Picture</mat-label>
+            <input type="file" name="image" (change)="selectFile($event)"/>
+          </div>
+        <mat-card-actions>
+          <button  mat-raised-button color="primary" style="margin-bottom: 5px">Submit</button>
+          <button  mat-raised-button color="warn" [routerLink]="'/products'" style="margin-bottom: 5px">Cancel</button>
+         </mat-card-actions>
+        </form>
+     </mat-card-content>
+     
+  </mat-card>
