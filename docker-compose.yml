@@ -5,14 +5,26 @@ services:
         build:
             context: ./cosmetic-eureka-service/
             dockerfile: Dockerfile
-        container_name: eurekaservice
+        container_name: eureka-service
         ports:
             - "8761:8761"
-        restart: unless-stopped
-    cosmetic-db:
-        container_name: cosmetic-db
         restart: always
-        image: mysql:latest
+        
+    cosmetic-common:
+        build:
+            context: ./cosmetic-common/
+            dockerfile: Dockerfile
+        container_name: common
+    cosmetic-setup-service:
+        build:
+            context: ./cosmetic-setup-service/
+            dockerfile: Dockerfile
+        depends_on: 
+            - cosmetic-common
+        container_name: setup-service
+        ports:
+            - "8080:8080"
+        restart: always
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: cosmetic
@@ -20,18 +32,7 @@ services:
             MYSQL_PASSWORD: root
             MYSQL_HOST: localhost
             MYSQL_PORT: 3306
-        volumes:
-            - cosmetic-db:/var/lib/mysql
-        ports:
-            - "3306:3306"
-    cosmetic-setup-service:
-        build:
-            context: ./cosmetic-setup-service/
-            dockerfile: Dockerfile
-        container_name: setupservice
-        ports:
-            - "8080:8080"
-        restart: unless-stopped
+        network_mode: host
         volumes:
             - cosmetic-db:/var/lib/mysql
     

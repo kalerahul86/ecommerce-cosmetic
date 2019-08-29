@@ -1,6 +1,6 @@
-FROM openjdk:8
-CMD ["mvn", "clean", "package"]
-COPY ./target/cosmetic-setup-service-0.0.1-SNAPSHOT.jar /home/ecommerce-app/cosmetic-setup-service.jar
-WORKDIR /home/ecommerce-app/
+FROM adoptopenjdk/maven-openjdk8
+COPY ./ /home/ecommerce-app/cosmetic-setup-service
+WORKDIR /home/ecommerce-app/cosmetic-setup-service/
 EXPOSE 8080
-CMD ["java", "-jar", "cosmetic-setup-service.jar"]
+RUN mvn clean package
+CMD ["java", "-jar", "./target/cosmetic-setup-service-0.0.1-SNAPSHOT.jar"]

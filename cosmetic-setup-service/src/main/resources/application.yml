@@ -7,10 +7,10 @@ spring:
      host: localhost
      port: 6379
   datasource:
-      url: jdbc:mysql://localhost:3306/cosmetic
+      url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
       driverClassName: com.mysql.cj.jdbc.Driver
-      username: root
-      password: root
+      username: ${MYSQL_USER}
+      password: ${MYSQL_PASSWORD}
   jpa:
       properties:
          hibernate:
