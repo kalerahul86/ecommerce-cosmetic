@@ -1,0 +1,23 @@
+<mat-toolbar>
+        <span>Add User</span>
+      </mat-toolbar>
+      <mat-card class="my-card">
+         <mat-card-content>
+            <form class="my-form" (submit)="onFormSubmit()">
+              
+              <mat-form-field class="full-width">
+                <mat-label>User Name</mat-label>
+                <input type = "text" [(ngModel)]="user.fullName" name="fullName" placeholder = "Enter Full Name" matInput >
+             </mat-form-field>
+             <mat-form-field class="full-width">
+                <mat-label>Mobile Number</mat-label>
+                <input type = "text" name = "mobileNumber" [(ngModel)]="user.mobileNumber" placeholder = "Enter Mobile Number" matInput >
+             </mat-form-field>
+            <mat-card-actions>
+              <button  mat-raised-button color="primary" style="margin-bottom: 5px">Submit</button>
+              <button  mat-raised-button color="warn" [routerLink]="'/users'" style="margin-bottom: 5px">Cancel</button>
+             </mat-card-actions>
+            </form>
+         </mat-card-content>
+         
+      </mat-card>

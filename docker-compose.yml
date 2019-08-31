@@ -1,6 +1,12 @@
 version: '3.3'
 
 services:
+    
+    cosmetic-common:
+        build:
+            context: ./cosmetic-common/
+            dockerfile: Dockerfile
+        container_name: common
     cosmetic-eureka-service:
         build:
             context: ./cosmetic-eureka-service/
@@ -9,12 +15,6 @@ services:
         ports:
             - "8761:8761"
         restart: always
-        
-    cosmetic-common:
-        build:
-            context: ./cosmetic-common/
-            dockerfile: Dockerfile
-        container_name: common
     cosmetic-setup-service:
         build:
             context: ./cosmetic-setup-service/
@@ -34,7 +34,7 @@ services:
             MYSQL_PORT: 3306
         network_mode: host
         volumes:
-            - cosmetic-db:/var/lib/mysql
+            - cosmetic-db:/var/lib/mysql    
     
 volumes:
     cosmetic-db:

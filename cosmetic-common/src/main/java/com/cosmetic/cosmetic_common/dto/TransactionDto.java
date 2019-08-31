@@ -6,7 +6,7 @@ public class TransactionDto {
     private String type;
     private double quantity;
     private double totalAmount;
-    private UserDto buyerName;
+    private UserDto buyer;
     private ProductDto product;
     private String businessPoint;
     private CosmeticMasterDto catelog;
@@ -35,11 +35,11 @@ public class TransactionDto {
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
-    public UserDto getBuyerName() {
-        return buyerName;
+    public UserDto getBuyer() {
+        return buyer;
     }
-    public void setBuyerName(UserDto buyerName) {
-        this.buyerName = buyerName;
+    public void setBuyer(UserDto buyer) {
+        this.buyer = buyer;
     }
     public ProductDto getProduct() {
         return product;

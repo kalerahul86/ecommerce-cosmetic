@@ -17,6 +17,9 @@ import { UpdateProductComponent } from './update-product/update-product.componen
 import { TransactionComponent } from './transaction/transaction.component';
 import { TransactionService } from './service/transaction.service';
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './service/user.service';
+import { AddUserComponent } from './add-user/add-user.component';
 
 const appRoutes: Routes = [
   { path: 'products', component: ProductComponent },
@@ -24,7 +27,9 @@ const appRoutes: Routes = [
   { path: 'add-product',      component: AddProductComponent },
   { path: 'update-product/:id',      component: UpdateProductComponent },
   { path: 'transactions',      component: TransactionComponent },
-  { path: 'add-transaction',      component: AddTransactionComponent }
+  { path: 'add-transaction',      component: AddTransactionComponent },
+  { path: 'users',      component: UserComponent },
+  { path: 'add-user',      component: AddUserComponent }
 ];
 
 @NgModule({
@@ -35,7 +40,9 @@ const appRoutes: Routes = [
     AddProductComponent,
     UpdateProductComponent,
     TransactionComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    UserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,  
@@ -71,7 +78,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [HttpClientModule, ProductService, SettingsService, TransactionService],
+  providers: [HttpClientModule, ProductService, SettingsService, TransactionService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

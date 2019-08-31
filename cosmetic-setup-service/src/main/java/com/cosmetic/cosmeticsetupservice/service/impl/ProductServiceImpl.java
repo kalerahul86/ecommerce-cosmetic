@@ -132,4 +132,12 @@ public class ProductServiceImpl implements ProductService {
         logger.info("Reading file...");
         return fileManager.readFile(image);
     }
+
+	@Override
+	public List<ProductDto> searchProducts(String productName) {
+		
+		logger.info("Searching products for name {}", productName);
+		List<Product> products = productRepository.searchProducts("%"+productName+"%");
+		return new ModelMapper().map(products, new TypeToken<List<ProductDto>>() {}.getType());
+	}
 }

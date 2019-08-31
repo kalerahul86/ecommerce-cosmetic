@@ -74,4 +74,12 @@ public interface ProductService {
      * @throws CosmeticException
      */
     byte[] download(String image) throws CosmeticException;
+
+    /**
+     * Search Products using name can be used for suggestion
+     * 
+     * @param productName
+     * @return
+     */
+	List<ProductDto> searchProducts(String productName);
 }

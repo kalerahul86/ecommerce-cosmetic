@@ -7,6 +7,7 @@ export class Transaction {
     public id: string;
     public type: string;
     public quantity: number;
+    public perItemPrice: number;
     public totalAmount: number;
     public businessPoint: string;
     public buyer: User;

@@ -11,7 +11,8 @@ export class TransactionService {
     addTransaction(transaction: Transaction){
         this.httpClient.post(this.rootUrl, transaction, {
             headers : {'content-type':'application/json'}
-        });
+        }).subscribe();
+        console.log("Added transaction");
     }
 
     getTransaction(id: string): Promise<Transaction> {

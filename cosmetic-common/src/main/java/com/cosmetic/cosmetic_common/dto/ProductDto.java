@@ -2,9 +2,6 @@ package com.cosmetic.cosmetic_common.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-
-@Entity
 public class ProductDto extends CommonDto {
 
     /**

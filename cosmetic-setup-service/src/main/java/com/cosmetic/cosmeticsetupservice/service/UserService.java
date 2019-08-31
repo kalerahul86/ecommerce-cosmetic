@@ -1,5 +1,7 @@
 package com.cosmetic.cosmeticsetupservice.service;
 
+import java.util.List;
+
 import com.cosmetic.cosmetic_common.dto.UserDto;
 import com.cosmetic.cosmetic_common.exception.CosmeticException;
 
@@ -32,4 +34,11 @@ public interface UserService {
      * @throws CosmeticException
      */
     UserDto update(UserDto userDto) throws CosmeticException;
+
+    /**
+     * Get all users
+     * 
+     * @return
+     */
+	List<UserDto> getAllUsers();
 }

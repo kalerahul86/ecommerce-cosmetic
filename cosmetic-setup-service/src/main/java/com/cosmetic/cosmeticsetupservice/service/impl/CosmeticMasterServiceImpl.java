@@ -37,7 +37,11 @@ public class CosmeticMasterServiceImpl implements CosmeticMasterService {
     }
 
     @Override
-    @CacheEvict(cacheNames = CacheNames.COSMETIC_MASTER, allEntries = true)
+    @CacheEvict(cacheNames = {
+    		CacheNames.COSMETIC_MASTER,
+    		CacheNames.PRODUCT_MASTER,
+    		CacheNames.USER_MASTER
+    }, allEntries = true)
     public void refreshCache() {
        
     }

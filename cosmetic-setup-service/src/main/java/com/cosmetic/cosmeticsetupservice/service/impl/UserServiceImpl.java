@@ -1,6 +1,9 @@
 package com.cosmetic.cosmeticsetupservice.service.impl;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +55,14 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.save(modelMapper.map(userDto, User.class));
         return modelMapper.map(user, UserDto.class);
     }
+
+	@Override
+	@Cacheable(cacheNames = CacheNames.USER_MASTER)
+	public List<UserDto> getAllUsers() {
+		
+		logger.info("Getting all user....");
+		List<User> users = userRepository.findAll();
+		return modelMapper.map(users,  new TypeToken<List<UserDto>>() {}.getType());
+	}
 
 }

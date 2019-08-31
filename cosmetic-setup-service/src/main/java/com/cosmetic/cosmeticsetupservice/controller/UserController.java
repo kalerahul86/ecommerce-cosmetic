@@ -1,5 +1,7 @@
 package com.cosmetic.cosmeticsetupservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,8 @@ import com.cosmetic.cosmetic_common.exception.CosmeticException;
 import com.cosmetic.cosmeticsetupservice.service.UserService;
 
 @RestController
-@RequestMapping(path = "/user/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/user/", consumes = MediaType.APPLICATION_JSON_VALUE, 
+	produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
@@ -32,5 +35,10 @@ public class UserController {
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     public UserDto get(@PathVariable("id") String id) throws CosmeticException {
         return userService.get(id);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public List<UserDto> getAllUsers() throws CosmeticException {
+        return userService.getAllUsers();
     }
 }

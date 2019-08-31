@@ -94,4 +94,10 @@ public class ProductController {
     public byte[] download(@RequestParam("imagename") String image) throws CosmeticException {
         return productService.download(image);
     }
+    
+    @RequestMapping(path = "/search/name/{name}", method = RequestMethod.GET,
+    		produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ProductDto> searchProducts(@PathVariable("name") String productName){
+    	return productService.searchProducts(productName);
+    }
 }

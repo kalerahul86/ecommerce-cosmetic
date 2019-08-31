@@ -48,4 +48,8 @@ export class ProductService {
     getProductByCode(productCode: string){
         // ...
     }
+
+    searchProductByName(name: string): Observable<Product[]>{
+        return this.http.get<Product[]>(this.rootURL+"search/name/"+name);
+    }
 }

@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Transaction } from '../model/transaction.model';
 import { TransactionService } from '../service/transaction.service';
 import { Router } from '@angular/router';
+import { ProductService } from '../service/product.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'transaction',
@@ -11,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class TransactionComponent implements OnInit {
 
-  displayedColumns: string[] = ['productImage', 'productCode', 'productName', 'catalog', 'quantity', 'totalAmount', 
-      'businessPoint', 'buyerName'];
+  displayedColumns: string[] = ['productImage', 'productCode', 
+  'productName', 'catalog', 'quantity', 'totalAmount', 
+'businessPoint', 'buyerName'];
   transactions: Observable<Transaction[]>;
   
   constructor(private transactionService: TransactionService,

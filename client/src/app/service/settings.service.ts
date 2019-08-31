@@ -27,8 +27,8 @@ export class SettingsService {
          }).toPromise();
     }
 
-    refreshCache(): Observable<boolean> {
-        return this.http.get<boolean>(this.rootURL+"refresh");
+    refreshCache(): Promise<boolean> {
+        return this.http.get<boolean>(this.rootURL+"refresh").toPromise();
     }
 
     getSettingsForCategory(): Promise<CosmeticMaster[]> {
